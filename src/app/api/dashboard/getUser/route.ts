@@ -5,8 +5,14 @@ export async function GET() {
   const user = await getUser();
 
   if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json(
+      { message: "Unauthorized", success: false },
+      { status: 401 },
+    );
   }
 
-  return NextResponse.json({ message: "Welcome", user });
+  return NextResponse.json(
+    { message: "Welcome", success: true, user },
+    { status: 200 },
+  );
 }

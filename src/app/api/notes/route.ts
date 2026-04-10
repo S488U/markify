@@ -7,7 +7,7 @@ export async function GET(): Promise<NextResponse> {
   const user = await getUser();
 
   if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ message: "Unauthorized", success: false }, { status: 401 });
   }
 
   await connectDB();
@@ -16,5 +16,5 @@ export async function GET(): Promise<NextResponse> {
     createdAt: -1,
   });
 
-  return NextResponse.json({ notes }, { status: 200 });
+  return NextResponse.json({ notes, success: true }, { status: 200 });
 }

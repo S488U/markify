@@ -15,7 +15,10 @@ export async function PUT(
   const user = await getUser();
 
   if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json(
+      { message: "Unauthorized", success: false },
+      { status: 401 },
+    );
   }
 
   const { title, content }: NoteInput = await req.json();
@@ -26,7 +29,10 @@ export async function PUT(
   const note = await Note.findById(noteId);
 
   if (!note || note.userId.toString() !== user.userId) {
-    return NextResponse.json({ error: "Not found" }, { status: 404 });
+    return NextResponse.json(
+      { message: "Not found", success: false },
+      { status: 404 },
+    );
   }
 
   note.title = title;
@@ -34,7 +40,7 @@ export async function PUT(
 
   await note.save();
 
-  return NextResponse.json({ note }, { status: 200 });
+  return NextResponse.json({ note, success: true }, { status: 200 });
 }
 
 export async function DELETE(
@@ -44,7 +50,10 @@ export async function DELETE(
   const user = await getUser();
 
   if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json(
+      { message: "Unauthorized", success: false },
+      { status: 401 },
+    );
   }
 
   await connectDB();
@@ -56,5 +65,8 @@ export async function DELETE(
     userId: user.userId,
   });
 
-  return NextResponse.json({ message: "Deleted" }, { status: 200 });
+  return NextResponse.json(
+    { message: "Deleted", success: true },
+    { status: 200 },
+  );
 }

@@ -20,14 +20,17 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     console.log(user);
 
     if (!user) {
-      return NextResponse.json({ error: "User Not found" }, { status: 404 });
+      return NextResponse.json(
+        { message: "User Not found", success: false },
+        { status: 404 },
+      );
     }
 
     const isMatchUser = await bcrypt.compare(password, user.password as string);
 
     if (!isMatchUser) {
       return NextResponse.json(
-        { error: "Email or Password is Wrong" },
+        { message: "Email or Password is Wrong", success: false },
         { status: 401 },
       );
     }
@@ -46,11 +49,14 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       httpOnly: true,
     });
 
-    return NextResponse.json({ message: "User Logged In" }, { status: 200 });
+    return NextResponse.json(
+      { message: "User Logged In", success: true },
+      { status: 200 },
+    );
   } catch (e) {
     console.error(e);
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      { message: "Internal Server Error", success: false },
       { status: 500 },
     );
   }

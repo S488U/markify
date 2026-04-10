@@ -5,5 +5,8 @@ export async function POST() {
   const storedCookies = await cookies();
   storedCookies.delete("token");
 
-  return NextResponse.json({ message: "User Logged Out" }, { status: 200 });
+  return NextResponse.json(
+    { message: "User Logged Out", success: true },
+    { status: 200 },
+  );
 }

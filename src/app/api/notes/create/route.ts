@@ -12,7 +12,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const user = await getUser();
 
   if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json(
+      { message: "Unauthorized", success: false },
+      { status: 401 },
+    );
   }
 
   const { title, content }: NoteInput = await req.json();
@@ -25,5 +28,5 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     content,
   });
 
-  return NextResponse.json({ note }, { status: 201 });
+  return NextResponse.json({ note, success: true }, { status: 201 });
 }

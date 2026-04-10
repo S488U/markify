@@ -2,6 +2,7 @@ import { connectDB } from "@/src/lib/db";
 import User from "@/src/model/User";
 import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
+import { MessageChannel } from "worker_threads";
 
 type signUpInput = {
   username: string;
@@ -10,7 +11,6 @@ type signUpInput = {
 };
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  
   const { username, email, password }: signUpInput = await req.json();
 
   await connectDB();
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const user = await User.findOne({ email });
   if (user) {
     return NextResponse.json(
-      { error: "User with mail id already exist" },
+      { message: "User with mail id already exist", success: false },
       { status: 409 },
     );
   }
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   });
 
   return NextResponse.json(
-    { message: "User created succesfully" },
+    { message: "User created succesfully", success: true },
     { status: 200 },
   );
 }
