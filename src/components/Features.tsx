@@ -1,34 +1,28 @@
 const Features = () => {
   const features = [
     {
-      icon: "✨",
-      title: "Instant Rendering",
-      description: "Experience lightning-fast markdown rendering with real-time preview and zero latency.",
+      title: "Instant Preview",
+      description: "Write raw markdown on one side and read the rendered version on the other without changing screens.",
     },
     {
-      icon: "🎨",
-      title: "Customizable Themes",
-      description: "Choose from multiple beautiful themes or create your own custom color schemes.",
+      title: "Saved Notes",
+      description: "Create, select, update, and delete notes from the sidebar so your workspace behaves like an actual notes app.",
     },
     {
-      icon: "🔒",
-      title: "Privacy First",
-      description: "All rendering happens client-side. Your content never touches our servers.",
+      title: "Theme Toggle",
+      description: "Switch between light and dark reading modes depending on whether you want a clean document feel or a night workspace.",
     },
     {
-      icon: "📱",
-      title: "Responsive Design",
-      description: "Perfect experience on desktop, tablet, and mobile devices with adaptive layouts.",
+      title: "Resizable Workspace",
+      description: "Adjust the sidebar, editor, and reading view widths so the layout fits how you like to write.",
     },
     {
-      icon: "⚡",
-      title: "High Performance",
-      description: "Optimized for speed with advanced caching and intelligent code splitting.",
+      title: "Code-Friendly Markdown",
+      description: "Headings, lists, blockquotes, links, inline code, and fenced code blocks are rendered clearly in both themes.",
     },
     {
-      icon: "🧩",
-      title: "Easy Integration",
-      description: "Simple API and comprehensive documentation for seamless integration into any project.",
+      title: "Focused Project Scope",
+      description: "No bloated AI workflow, no fake enterprise claims, just a solid markdown notes dashboard built for your college project.",
     },
   ];
 
@@ -45,11 +39,11 @@ const Features = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-linear-to-r from-violet-300 to-violet-100 bg-clip-text text-transparent">
-              Powerful Features
+              What Markify Actually Does
             </span>
           </h2>
           <p className="text-violet-300/70 text-lg max-w-2xl mx-auto">
-            Everything you need to render beautiful markdown with ease and elegance.
+            The landing page should match the product, so these are the core abilities the dashboard already focuses on.
           </p>
         </div>
 
@@ -64,7 +58,9 @@ const Features = () => {
               <div className="absolute inset-0 rounded-xl bg-linear-to-br from-violet-600/0 to-violet-600/0 group-hover:from-violet-600/5 group-hover:to-violet-500/5 transition-all duration-300"></div>
 
               <div className="relative z-10">
-                <div className="text-4xl mb-3">{feature.icon}</div>
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl border border-violet-700/40 bg-violet-500/10">
+                  <span className="block h-3.5 w-3.5 rounded-full bg-linear-to-br from-violet-200 to-violet-500"></span>
+                </div>
                 <h3 className="text-lg font-semibold text-violet-100 mb-2">{feature.title}</h3>
                 <p className="text-violet-300/70 leading-relaxed">{feature.description}</p>
               </div>
