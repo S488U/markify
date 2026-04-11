@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
@@ -19,8 +20,181 @@
   }
 }
 
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.markdown-preview {
+  color: #1e293b;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.dark .markdown-preview {
+  color: #d9e2f2;
+}
+
+.markdown-preview > * + * {
+  margin-top: 1rem;
+}
+
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4 {
+  color: #0f172a;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.dark .markdown-preview h1,
+.dark .markdown-preview h2,
+.dark .markdown-preview h3,
+.dark .markdown-preview h4 {
+  color: #f8fbff;
+}
+
+.markdown-preview h1 {
+  font-size: 2rem;
+}
+
+.markdown-preview h2 {
+  font-size: 1.5rem;
+}
+
+.markdown-preview h3 {
+  font-size: 1.25rem;
+}
+
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4,
+.markdown-preview p,
+.markdown-preview ul,
+.markdown-preview ol,
+.markdown-preview pre,
+.markdown-preview blockquote {
+  margin-bottom: 1rem;
+}
+
+.markdown-preview p,
+.markdown-preview li,
+.markdown-preview blockquote {
+  color: #334155;
+  line-height: 1.8;
+}
+
+.dark .markdown-preview p,
+.dark .markdown-preview li,
+.dark .markdown-preview blockquote {
+  color: #c8d3e4;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+  padding-left: 1.5rem;
+}
+
+.markdown-preview li + li {
+  margin-top: 0.4rem;
+}
+
+.markdown-preview strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.dark .markdown-preview strong {
+  color: #f8fbff;
+}
+
+.markdown-preview em {
+  color: #475569;
+}
+
+.dark .markdown-preview em {
+  color: #cbd5e1;
+}
+
+.markdown-preview code {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: #e2e8f0;
+  border-radius: 0.45rem;
+  padding: 0.15rem 0.4rem;
+  color: #0f172a;
+  font-size: 0.9em;
+}
+
+.dark .markdown-preview code {
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e2e8f0;
+}
+
+.markdown-preview pre {
+  overflow-x: auto;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: #f1f5f9;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.dark .markdown-preview pre {
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(2, 6, 23, 0.95);
+}
+
+.markdown-preview pre code {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #0f172a;
+  display: block;
+  line-height: 1.7;
+}
+
+.dark .markdown-preview pre code {
+  color: #e2e8f0;
+}
+
+.markdown-preview blockquote {
+  border-left: 3px solid rgba(99, 102, 241, 0.35);
+  background: rgba(99, 102, 241, 0.08);
+  border-radius: 0 1rem 1rem 0;
+  padding: 0.75rem 1rem;
+}
+
+.dark .markdown-preview blockquote {
+  border-left: 3px solid rgba(34, 211, 238, 0.5);
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.markdown-preview hr {
+  border: 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  margin: 1.5rem 0;
+}
+
+.markdown-preview a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.dark .markdown-preview a {
+  color: #67e8f9;
 }

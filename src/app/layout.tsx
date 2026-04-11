@@ -1,16 +1,8 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import AppShell from "@/src/components/AppShell";
 import Navbar from "@/src/components/Navbar";
 import Footer from "@/src/components/Footer";
-
-const inter = Inter({
-	subsets: ["latin"],
-	display: "swap",
-});
-
-const siteUrl = "http://localhost:3000";
-
+import ThemeProvider from "@/src/components/ThemeProvider";
 
 export default function RootLayout({
 	children,
@@ -18,11 +10,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={`${inter.className} antialiased`}>
-				<Navbar />
-				{children}
-				<Footer />
+		<html lang="en" suppressHydrationWarning>
+			<body className="antialiased">
+				<ThemeProvider>
+					<AppShell navbar={<Navbar />} footer={<Footer />}>
+						{children}
+					</AppShell>
+				</ThemeProvider>
 			</body>
 		</html>
 	);
