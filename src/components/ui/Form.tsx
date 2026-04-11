@@ -29,7 +29,7 @@ const Form = ({ signin = false }: FormProps) => {
           linkText: "Create one",
           url: "/signup",
         },
-        endpoint: "http://localhost:3000/api/auth/login",
+        endpoint: "/api/auth/login",
       }
     : {
         heading: "Create Account",
@@ -40,7 +40,7 @@ const Form = ({ signin = false }: FormProps) => {
           linkText: "Sign in",
           url: "/signin",
         },
-        endpoint: "http://localhost:3000/api/auth/signup",
+        endpoint: "/api/auth/signup",
       };
 
   const handleSubmit = async (e: React.FormEvent) => {
